@@ -16,6 +16,7 @@ import { AdminLayout } from "./Layouts/Admin-Layout";
 import { AdminUsers } from "./pages/Admin-Users";
 import { AdminContacts } from "./pages/Admin-Contacts";
 import { AdminUpdate } from "./pages/Admin-Update";
+// import {EditUser} from '.'
 
 function App() {
   return (
@@ -36,7 +37,7 @@ function App() {
             <Route path="contacts" element={<AdminContacts />} />
           </Route>
           <Route path={`/admin/users/:id/edit`} element={<AdminUpdate/>}/>
-          <Route path="adminusers/:id/edit" element={<EditUser />} />
+          {/* <Route path="adminusers/:id/edit" element={<Edituse} /> */}
         </Routes>
         <Footer />
       </BrowserRouter>

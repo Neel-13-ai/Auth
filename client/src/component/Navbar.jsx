@@ -1,9 +1,11 @@
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import { useAuth } from "../store/authStore";
+import { HiUsers } from "react-icons/hi";
+import { RiContactsBook2Fill } from "react-icons/ri";
 
 export const Navbar = () => {
-  const { issLoggedIn } = useAuth();
+  const { user, issLoggedIn, isLoading } = useAuth();
 
   return (
     <>
@@ -22,16 +24,17 @@ export const Navbar = () => {
                 <NavLink to="/about">About</NavLink>
               </li>
               <li>
-                <NavLink to="/contact"> Contact</NavLink>
+                <NavLink to="/contact"> Contact Us</NavLink>
               </li>
               <li>
                 <NavLink to="/services">Services</NavLink>
               </li>
-              {issLoggedIn ? 
+
+              {issLoggedIn ? (
                 <li>
                   <NavLink to="/logout">Logout</NavLink>
                 </li>
-               : 
+              ) : (
                 <>
                   <li>
                     <NavLink to="/register">Register</NavLink>
@@ -40,7 +43,25 @@ export const Navbar = () => {
                     <NavLink to="/login">Login</NavLink>
                   </li>
                 </>
-              }
+              )}
+
+               {user.isAdmin && !isLoading ? (
+                <li>
+                  <NavLink to="/admin/users">
+                    <HiUsers />
+                    users
+                  </NavLink>
+                </li>
+              ): "Loading"}
+
+              {user.isAdmin && (
+                <li>
+                  <NavLink to="/admin/contacts">
+                    <RiContactsBook2Fill />
+                    contacts
+                  </NavLink>
+                </li>
+              )}
             </ul>
           </nav>
         </div>

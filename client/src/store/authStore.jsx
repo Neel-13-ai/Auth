@@ -28,12 +28,15 @@ export const AuthProvider = ({ children }) => {
   const userAuthentication = async () => {
     try {
       SetIsLoading(true);
-      const response = await fetch("http://localhost:5000/api/auth/user", {
-        method: "GET",
-        headers: {
-          Authorization: authorizationToken,
-        },
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/auth/user`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: authorizationToken,
+          },
+        }
+      );
       if (response.ok) {
         const data = await response.json();
 
@@ -53,9 +56,12 @@ export const AuthProvider = ({ children }) => {
 
   const userServices = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/data/service", {
-        method: "GET",
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/data/service`,
+        {
+          method: "GET",
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();

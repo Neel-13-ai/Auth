@@ -1,7 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-
 import { Navbar } from "./component/Navbar";
 import { About } from "./pages/About";
 import { Contact } from "./pages/Contact";
@@ -36,7 +35,7 @@ function App() {
             <Route path="users" element={<AdminUsers />} />
             <Route path="contacts" element={<AdminContacts />} />
           </Route>
-          <Route path={`/admin/users/:id/edit`} element={<AdminUpdate/>}/>
+          <Route path={`/admin/users/:id/edit`} element={<AdminUpdate />} />
           {/* <Route path="adminusers/:id/edit" element={<Edituse} /> */}
         </Routes>
         <Footer />

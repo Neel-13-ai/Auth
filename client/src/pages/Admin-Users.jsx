@@ -9,12 +9,15 @@ export const AdminUsers = () => {
 
   const getAllUserData = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/admin/users", {
-        method: "GET",
-        headers: {
-          Authorization: authorizationToken,
-        },
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/admin/users`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: authorizationToken,
+          },
+        }
+      );
 
       const data = await response.json();
 
@@ -42,7 +45,7 @@ export const AdminUsers = () => {
     }
 
     const response = await fetch(
-      `http://localhost:5000/api/admin/users/delete/${id}`,
+      `${import.meta.env.VITE_BACKEND_URL}/api/admin/users/delete/${id}`,
       {
         method: "DELETE",
         headers: {
